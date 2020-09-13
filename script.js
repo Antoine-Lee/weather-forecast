@@ -1,5 +1,3 @@
-// Access to fetch at 'https://www.metaweather.com/api/location/search/?query=sin' from origin 'http://127.0.0.1:5500' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.If an opaque response serves your needs, set the request's mode to 'no - cors' to fetch the resource with CORS disabled.
-
 let cityInput = document.getElementById ("cityInput")
 let cityDropdown = document.getElementById ("cityDropdown")
 let cityInfo = document.getElementById ("cityInfo")
@@ -44,12 +42,23 @@ let GetCityData = async (woeid) =>
 
     json.consolidated_weather.map ((elem) => 
     {
-        cityInfo.innerHTML += `<h2>Date: ${elem.applicable_date}</h2>\n<h2>Weather State: ${elem.weather_state_name}</h2>\n<h2>Min Temp: ${elem.min_temp}</h2>\n<h2>Max Temp: ${elem.max_temp}</h2>`
+        cityInfo.innerHTML += `<h2>Date: ${elem.applicable_date}</h2>\n
+                                <h2>Temperature: ${elem.the_temp}</h2>\n
+                                <h2>Weather State: ${elem.weather_state_name}</h2>\n
+                                <h2>Min Temp: ${elem.min_temp}</h2>\n
+                                <h2>Max Temp: ${elem.max_temp}</h2>`
     })
 }
 
 cityInput.addEventListener("change", UpdateCityDropdown);
 cityDropdown.addEventListener("change", CheckWeatherForecast);
+
+
+
+
+
+
+
 
 
 

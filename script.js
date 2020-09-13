@@ -40,15 +40,18 @@ let GetCityData = async (woeid) =>
     
     console.log(json.consolidated_weather[0])
 
-    json.consolidated_weather.map ((elem) => 
+    json.consolidated_weather.map ((forecast) => 
     {
-        cityInfo.innerHTML += `<h2>Date: ${elem.applicable_date}</h2>\n
-                                <h2>Temperature: ${elem.the_temp}</h2>\n
-                                <h2>Weather State: ${elem.weather_state_name}</h2>\n
-                                <h2>Min Temp: ${elem.min_temp}</h2>\n
-                                <h2>Max Temp: ${elem.max_temp}</h2>`
+        cityInfo.innerHTML += `<h2>Date: ${forecast.applicable_date}</h2>\n
+                                <h2>Temperature: ${forecast.the_temp}</h2>\n
+                                <h2>Weather State: ${forecast.weather_state_name}</h2>\n
+                                <h2>Min Temp: ${forecast.min_temp}</h2>\n
+                                <h2>Max Temp: ${forecast.max_temp}</h2>
+                                <img src="https://www.metaweather.com/static/img/weather/png/lc.png">`
     })
 }
+
+// GetCityData(1062617)
 
 cityInput.addEventListener("change", UpdateCityDropdown);
 cityDropdown.addEventListener("change", CheckWeatherForecast);

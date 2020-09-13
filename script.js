@@ -42,13 +42,13 @@ let GetCityData = async (woeid) =>
     json.consolidated_weather.map ((forecast) => 
     {
         cityInfo.innerHTML += `<h1>Title: ${forecast.title}</h1>\n
-                                <h2>${forecast.location_type} in ${forecast.parent.title}</h2>\n
+                                <h2>${forecast.location_type}</h2>\n
                                 <h3>Date: ${forecast.applicable_date}</h3>\n
                                 <h3>Temperature: ${forecast.the_temp}</h3>\n
                                 <h3>Weather State: ${forecast.weather_state_name}</h2>\n
                                 <h3>Min Temp: ${forecast.min_temp}</h3>\n
                                 <h3>Max Temp: ${forecast.max_temp}</h3>
-                                <img src="https://www.metaweather.com/static/img/weather/png/lc.png">
+                                <img src="https://www.metaweather.com/static/img/weather/png/${forecast.weather_state_abbr}.png">
                                 <br>`
     })
 }

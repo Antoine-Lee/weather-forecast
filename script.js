@@ -35,8 +35,11 @@ let GetCityData = async (woeid) =>
     let response = await fetch(`https://cors-anywhere.herokuapp.com/https://www.metaweather.com/api/location/${woeid}/`)
     let json = await response.json()
     
-    cityInfo.innerHTML = `<h1>Title: ${json.title}</h1 >\n
-                            <h2>${json.location_type} in ${json.parent.title}</h2 >\n`
+    cityInfo.innerHTML = `<h1>Title: ${json.title}</h1 >\n`
+    if (json.title != json.parent.title)
+        cityInfo.innerHTML += `<h2>${json.location_type} in ${json.parent.title}</h2>\n`
+    else
+        cityInfo.innerHTML += `<h2>${json.location_type}</h2>\n`
     
     console.log(json)
 

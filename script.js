@@ -1,6 +1,19 @@
-let cityInput = document.getElementById ("cityInput")
-let cityDropdown = document.getElementById ("cityDropdown")
-let cityInfo = document.getElementById ("cityInfo")
+// const cityInput = document.getElementById ("cityInput")
+// const submitCityButton = document.getElementById("submitCity")
+// const cityInfo = document.getElementById ("cityInfo")
+
+const cityInput = document.querySelector ("#cityInput")
+const submitCityButton = document.querySelector("#submitCity")
+const cityInfo = document.querySelector ("#cityInfo")
+
+const dates = document.querySelectorAll (".date")
+const statusIcons = document.querySelectorAll (".statusIcon")
+const status = document.querySelectorAll (".status")
+const temperature = document.querySelectorAll (".temperature")
+const minTemperature = document.querySelectorAll (".minTemperature")
+const maxTemperature = document.querySelectorAll (".maxTemperature")
+
+
 
 let UpdateCityDropdown = async () => 
 {
@@ -35,26 +48,29 @@ let GetCityData = async (woeid) =>
     let response = await fetch(`https://cors-anywhere.herokuapp.com/https://www.metaweather.com/api/location/${woeid}/`)
     let json = await response.json()
     
-    // cityInfo.innerHTML = `<h1>Title: ${json.title}</h1>\n`
     if (json.title != json.parent.title)
-        cityInfo.innerHTML += `<h1>Title: ${json.title} <h2>${json.location_type} in ${json.parent.title}</h2></h1>\n`
+        cityInfo.style.textContent = `${json.title} ${json.location_type} in ${json.parent.title}`
     else
-        cityInfo.innerHTML += `<h1>Title: ${json.title}</h1>\n`
-    
-    json.consolidated_weather.map ((forecast) => 
+        cityInfo.style.textContent = `${json.title}`
+
+    json.consolidated_weather.map ((forecast, index) => 
     {
-        cityInfo.innerHTML += `<h3>Date: ${forecast.applicable_date}</h3>\n
-                                <h3>Temperature: ${forecast.the_temp}</h3>\n
-                                <h3>Weather State: ${forecast.weather_state_name}</h2>\n
-                                <h3>Min Temp: ${forecast.min_temp}</h3>\n
-                                <h3>Max Temp: ${forecast.max_temp}</h3>
-                                <img src="https://www.metaweather.com/static/img/weather/png/64/${forecast.weather_state_abbr}.png">
-                                <br>`
+        if (index <= 4)
+        {
+            if (index >= 2)
+                dates[index].innerHTML = `${forecast.applicable_date}`
+            
+            statusIcons[index].src = `https://www.metaweather.com/static/img/weather/png/64/${forecast.weather_state_abbr}.png`
+            status[index].innerHTML = `${forecast.weather_state_name}`
+            temperature[index].innerHTML = `${Math.round(forecast.the_temp * 10) / 10}`
+            minTemperature [index].innerHTML = `Min: ${Mathf.round(forecast.min_temp * 10) / 10}`
+            maxTemperature [index].innerHTML = `Max: ${Mathf.round(forecast.max_temp * 10) / 10}`
+        }
     })
 }
 
 cityInput.addEventListener("change", UpdateCityDropdown);
-cityDropdown.addEventListener("change", CheckWeatherForecast);
+submitCityButton.addEventListener("click", CheckWeatherForecast);
 
 
 

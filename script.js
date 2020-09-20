@@ -13,14 +13,12 @@ const temperature = document.querySelectorAll (".temperature")
 const minTemperature = document.querySelectorAll (".minTemperature")
 const maxTemperature = document.querySelectorAll (".maxTemperature")
 
-
-
 let UpdateCityDropdown = async () => 
 {
     let response = await fetch(`https://cors-anywhere.herokuapp.com/https://www.metaweather.com/api/location/search/?query=${cityInput.value}`)
     let json = await response.json()
 
-    cityDropdown.innerHTML = '<option>None</option>\n'
+    cityDropdown.innerHTML = '<option>Select</option>\n'
     json.map((city) => 
     {
         cityDropdown.innerHTML += `<option>${city.title}</option>\n`

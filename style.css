@@ -1,13 +1,12 @@
 body
 {
-  font-family: 'Roboto', sans-serif;
-  height: 100%; 
-  margin: 0;
-  /* background-image: url("https://htmlcolorcodes.com/assets/images/html-color-codes-color-tutorials-hero-00e10b1f.jpg"); 
+  font-family: 'Roboto', sans-serif; 
+  margin: 75px; 
+  /* background-color: #4a4e4d; */
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  overflow: hidden; */
+  overflow: hidden; 
 }
 
 #title
@@ -15,14 +14,42 @@ body
   padding-top: 10px;
   font-size: 50px;
   text-align: center;
+  color: #0e9aa7; 
 }
 
 #cityForm
 {
   margin: auto;
-  width: 50%;
-  padding-bottom: 10px;
+  /* padding-bottom: 10px; */
   text-align: center;
+  height: 70px;
+}
+
+#cityInput, #cityDropdown, #submitCity
+{
+  height: 50px;  
+  border-radius: 10px;
+  font-size: 18px;
+  background-color: #f7f7f7;
+  border: 3px solid rgba(0, 0, 0, 0);  
+  margin: 2px;
+}
+
+#cityInput
+{
+	padding: 13px 13px 13px 20px; 
+  box-sizing: border-box; 
+  width: 50%; 
+}
+
+#cityDropdown
+{
+  width: 20%; 
+}
+
+#submitCity
+{
+  width: 20%; 
 }
 
 #cityInfo
@@ -42,9 +69,10 @@ body
   padding-bottom: 20px;
   text-align: center;
   border-radius: 10px;
-
+  background-color: white;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   transition: 0.3s;
+  height: 350px; 
 }
 
 .weatherInfoCard:hover 

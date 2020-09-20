@@ -4,15 +4,15 @@
 
 const cityInput = document.querySelector ("#cityInput")
 const submitCityButton = document.querySelector("#submitCity")
-const cityInfo = document.querySelector ("#cityInfo")
+const cityName = document.querySelector ("#cityName")
 
-const weatherInfo = document.querySelector("#weatherInfo")
-const dates = document.querySelectorAll (".date")
-const statusIcons = document.querySelectorAll (".statusIcon")
-const status = document.querySelectorAll (".status")
-const temperature = document.querySelectorAll (".temperature")
-const minTemperature = document.querySelectorAll (".minTemperature")
-const maxTemperature = document.querySelectorAll (".maxTemperature")
+let weatherInfo = document.querySelector("#weatherInfo")
+let dates = document.querySelectorAll (".date")
+let statusIcons = document.querySelectorAll (".statusIcon")
+let status = document.querySelectorAll (".status")
+let temperature = document.querySelectorAll (".temperature")
+let minTemperature = document.querySelectorAll (".minTemperature")
+let maxTemperature = document.querySelectorAll (".maxTemperature")
 
 let firstSearch = false
 
@@ -50,17 +50,23 @@ let GetCityData = async (woeid) =>
     let json = await response.json()
     
     if (json.title != json.parent.title)
-        cityInfo.style.textContent = `${json.title} ${json.location_type} in ${json.parent.title}`
+        cityName.innerHTML = `${json.title} ${json.location_type} in ${json.parent.title}`
     else
-        cityInfo.style.textContent = `${json.title}`
+        cityName.innerHTML = `${json.title}`
 
     if (!firstSearch)
     {
         weatherInfo.innerHTML = ''
         for (let counter = 0; counter < 5; counter++) 
         {
+            let date = ''
+            if (counter == 0)
+                date = "Today"
+            else if (counter == 1)
+                date = "Tomorrow"
+
             weatherInfo.innerHTML += `<div class="weatherInfoCard">
-                                        <h3 class="date"></h3>
+                                        <h3 class="date">${date}</h3>
                                         <img class="statusIcon">
                                         <h3 class="status"></h2>
                                         <h3 class="temperature"></h3>
@@ -68,6 +74,15 @@ let GetCityData = async (woeid) =>
                                         <h3 class="maxTemperature"></h3>
                                     </div>`
         }
+
+        weatherInfo = document.querySelector("#weatherInfo")
+        dates = document.querySelectorAll(".date")
+        statusIcons = document.querySelectorAll(".statusIcon")
+        status = document.querySelectorAll(".status")
+        temperature = document.querySelectorAll(".temperature")
+        minTemperature = document.querySelectorAll(".minTemperature")
+        maxTemperature = document.querySelectorAll(".maxTemperature")
+
         firstSearch = true; 
     }
 

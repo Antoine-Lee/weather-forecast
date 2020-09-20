@@ -2,7 +2,7 @@ body
 {
   font-family: 'Roboto', sans-serif; 
   margin: 75px; 
-  /* background-color: #4a4e4d; */
+  background-color: white;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -11,17 +11,16 @@ body
 
 #title
 {
-  padding-top: 10px;
-  font-size: 50px;
   text-align: center;
+  font-size: 50px;
   color: #0e9aa7; 
+  font-size: 60px;
   /* text-shadow: 0px 0px 2px #3da4ab; */
 }
 
 #cityForm
 {
   margin: auto;
-  /* padding-bottom: 10px; */
   text-align: center;
   height: 70px;
 }
@@ -54,7 +53,7 @@ body
   width: 20%; 
 }
 
-#cityInfo
+#cityName
 {
   text-align: center;
 }

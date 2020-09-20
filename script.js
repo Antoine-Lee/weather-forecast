@@ -6,12 +6,15 @@ const cityInput = document.querySelector ("#cityInput")
 const submitCityButton = document.querySelector("#submitCity")
 const cityInfo = document.querySelector ("#cityInfo")
 
+const weatherInfo = document.querySelector("#weatherInfo")
 const dates = document.querySelectorAll (".date")
 const statusIcons = document.querySelectorAll (".statusIcon")
 const status = document.querySelectorAll (".status")
 const temperature = document.querySelectorAll (".temperature")
 const minTemperature = document.querySelectorAll (".minTemperature")
 const maxTemperature = document.querySelectorAll (".maxTemperature")
+
+let firstSearch = false
 
 let UpdateCityDropdown = async () => 
 {
@@ -51,6 +54,23 @@ let GetCityData = async (woeid) =>
     else
         cityInfo.style.textContent = `${json.title}`
 
+    if (!firstSearch)
+    {
+        weatherInfo.innerHTML = ''
+        for (let counter = 0; counter < 5; counter++) 
+        {
+            weatherInfo.innerHTML += `<div class="weatherInfoCard">
+                                        <h3 class="date"></h3>
+                                        <img class="statusIcon">
+                                        <h3 class="status"></h2>
+                                        <h3 class="temperature"></h3>
+                                        <h3 class="minTemperature"></h3>
+                                        <h3 class="maxTemperature"></h3>
+                                    </div>`
+        }
+        firstSearch = true; 
+    }
+
     json.consolidated_weather.map ((forecast, index) => 
     {
         if (index <= 4)
@@ -61,8 +81,8 @@ let GetCityData = async (woeid) =>
             statusIcons[index].src = `https://www.metaweather.com/static/img/weather/png/64/${forecast.weather_state_abbr}.png`
             status[index].innerHTML = `${forecast.weather_state_name}`
             temperature[index].innerHTML = `${Math.round(forecast.the_temp * 10) / 10}`
-            minTemperature [index].innerHTML = `Min: ${Mathf.round(forecast.min_temp * 10) / 10}`
-            maxTemperature [index].innerHTML = `Max: ${Mathf.round(forecast.max_temp * 10) / 10}`
+            minTemperature [index].innerHTML = `Min: ${Math.round(forecast.min_temp * 10) / 10}`
+            maxTemperature [index].innerHTML = `Max: ${Math.round(forecast.max_temp * 10) / 10}`
         }
     })
 }

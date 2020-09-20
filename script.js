@@ -93,7 +93,7 @@ let GetCityData = async (woeid) =>
             if (index >= 2)
                 dates[index].innerHTML = `${forecast.applicable_date}`
             
-            statusIcons[index].src = `https://www.metaweather.com/static/img/weather/png/64/${forecast.weather_state_abbr}.png`
+            statusIcons[index].src = `https://www.metaweather.com/static/img/weather/${forecast.weather_state_abbr}.svg`
             status[index].innerHTML = `${forecast.weather_state_name}`
             temperature[index].innerHTML = `${Math.round(forecast.the_temp * 10) / 10}`
             minTemperature [index].innerHTML = `Min: ${Math.round(forecast.min_temp * 10) / 10}`

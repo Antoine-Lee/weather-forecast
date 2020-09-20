@@ -27,35 +27,45 @@ body
 
 #cityInput, #cityDropdown, #submitCity
 {
-  height: 50px;  
+  height: 60px;  
   border-radius: 10px;
-  font-size: 18px;
-  background-color: #f7f7f7;
+  font-size: 24px;
+  background-color: #e9e9e9;
   border: none;
   margin: 2px;
 }
 
 #cityInput
 {
-	padding: 12px 12px 12px 12px; 
+	padding: 12px 20px 12px 20px; 
   box-sizing: border-box; 
-  width: 50%; 
+  width: 40%; 
+  /* background-color: #fe8a71; */
+}
+
+#cityInput::placeholder
+{
+  color: #4a4e4d; 
 }
 
 #cityDropdown
 {
-  width: 20%; 
-  padding: 12px 12px 12px 12px; 
+  width: 30%; 
+  padding: 12px 20px 12px 20px; 
+  /* background-color: #f6cd61; */
 }
 
 #submitCity
 {
   width: 20%; 
+  /* background-color: #7cc579; */
 }
 
 #cityName
 {
   text-align: center;
+  font-size: 40px;
+  color: #3da4ab; 
 }
 
 #weatherInfo
@@ -83,6 +93,5 @@ body
 
 .weatherInfoCard #date
 {
-  /* display: inline; */
   font-size: 30px;
 }
